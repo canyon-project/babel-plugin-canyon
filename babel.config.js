@@ -4,7 +4,6 @@ module.exports = function (api) {
     const plugins = [
         ['./lib',
             {
-                codeHouseId: 99999,
                 repoId: 123,
                 dsn: 'http://xxx.xxx/api/v1/coverage/client',
                 reporter:"reporter",
