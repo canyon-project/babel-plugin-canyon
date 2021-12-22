@@ -4,9 +4,11 @@ module.exports = function (api) {
     const plugins = [
         ['./lib',
             {
-                projectId: 99999,
+                codeHouseId: 99999,
+                repoId: 123,
                 dsn: 'http://xxx.xxx/api/v1/coverage/client',
-                reporter:"reporter"
+                reporter:"reporter",
+                commitSha:"32c448f6af718759faa3327a6a65b34f760a2844"
             }]];
     return {
         presets,
