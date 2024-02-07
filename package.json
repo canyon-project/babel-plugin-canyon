@@ -1,0 +1,32 @@
+{
+  "name": "babel-plugin-canyon",
+  "version": "1.6.20",
+  "description": "",
+  "main": "./lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo hi",
+    "build": "node gen-template.js && webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/canyon-project/babel-plugin-canyon.git"
+  },
+  "author": "zhangtao25",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/canyon-project/babel-plugin-canyon/issues"
+  },
+  "homepage": "https://github.com/canyon-project/babel-plugin-canyon#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
+  }
+}
