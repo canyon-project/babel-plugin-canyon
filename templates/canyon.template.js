@@ -6,5 +6,6 @@ window.__canyon__ = {
     commitSha: 'COMMIT_SHA',
     reportID: 'REPORT_ID',
     compareTarget: 'COMPARE_TARGET',
-    branch: 'BRANCH'
+    branch: 'BRANCH',
+    env:'ENV'
 }
