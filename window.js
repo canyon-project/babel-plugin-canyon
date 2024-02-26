@@ -7,7 +7,8 @@
     } else if (typeof global !== "undefined") {
       return global;
     } else {
-      throw new Error('unable to locate global object');
+      console.log('unable to locate global object');
+      return {};
     }
   }
 })()
