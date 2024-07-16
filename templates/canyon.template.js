@@ -1,5 +1,6 @@
 window.__canyon__ = {
     projectID: 'PROJECT_ID',
+    buildID:'BUILD_ID',
     dsn: 'DSN',
     instrumentCwd: 'INSTRUMENT_CWD',
     reporter: 'REPORTER',
