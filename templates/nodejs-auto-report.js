@@ -1,7 +1,7 @@
 if (typeof process !== 'undefined' && process.env) {
-  function autoReport () {
+  function autoReport() {
     try {
-      if (fetch&&window.__canyon__&&window.__coverage__) {
+      if (fetch && window.__canyon__ && window.__coverage__ && window.__canyon__.dsn && window.__canyon__.reporter) {
         console.log('canyon: auto report ing...')
         fetch(window.__canyon__.dsn, {
           method: 'post',
@@ -23,6 +23,7 @@ if (typeof process !== 'undefined' && process.env) {
 
     }
   }
+
   autoReport()
   setInterval(autoReport, 1000 * 60 * 5)
 }

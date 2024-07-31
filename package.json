@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-canyontest",
-  "version": "1.8.50",
+  "version": "1.8.51",
   "description": "",
   "main": "./lib/index.js",
   "directories": {
