@@ -1,6 +1,7 @@
 if (typeof process !== 'undefined' && process.env) {
-  setInterval(function () {
+  function autoReport () {
     if (fetch) {
+      console.log('auto report ing...')
       fetch(window.__canyon__.dsn, {
         method: 'post',
         headers: {
@@ -11,7 +12,13 @@ if (typeof process !== 'undefined' && process.env) {
           coverage: window.__coverage__,
           ...window.__canyon__
         })
+      }).then(function () {
+        console.log('auto report success')
+      }).catch(function (err) {
+        console.log('auto report error:', err)
       })
     }
-  }, 1000 * 60 * 5)
+  }
+  autoReport()
+  setInterval(autoReport, 1000 * 60 * 5)
 }
