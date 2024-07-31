@@ -1,7 +1,7 @@
 if (typeof process !== 'undefined' && process.env) {
   function autoReport() {
     try {
-      if (fetch && window.__canyon__ && window.__coverage__ && window.__canyon__.dsn && window.__canyon__.reporter) {
+      if (fetch && window.__canyon__ && window.__coverage__ && window.__canyon__.dsn && window.__canyon__.reporter && window.__canyon__.dsn !== '-') {
         console.log('canyon: auto report ing...')
         fetch(window.__canyon__.dsn, {
           method: 'post',
