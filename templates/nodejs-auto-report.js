@@ -1,6 +1,6 @@
 if (typeof process !== 'undefined' && process.env) {
   function autoReport () {
-    if (fetch) {
+    if (fetch&&window.__canyon__&&window.__coverage__) {
       console.log('auto report ing...')
       fetch(window.__canyon__.dsn, {
         method: 'post',
