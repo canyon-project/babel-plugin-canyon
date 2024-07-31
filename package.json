@@ -1,5 +1,5 @@
 {
-  "name": "babel-plugin-canyontest",
+  "name": "babel-plugin-canyon",
   "version": "1.8.52",
   "description": "",
   "main": "./lib/index.js",
