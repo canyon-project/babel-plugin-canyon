@@ -8,7 +8,7 @@
 let babelConfig = {
   plugins: [
     "istanbul",
-    "canyon"
+    ["canyon",{"projectID":"999","commitSha":"xxxxxx"}
   ]
 }
 ```
