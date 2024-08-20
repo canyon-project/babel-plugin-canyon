@@ -45,14 +45,14 @@ module.exports = {
 }
 ```
 
-| Prop      | Description              | Usage                                     |
-|-----------|--------------------------|-------------------------------------------------|
-| dsn       | 上报的端点，建议直接通过流水线变量配置      | Required               |
-| reporter  | 上报人，建议直接通过流水线变量配置        | Required               |
-| projectID | 仓库ID，会侦测流水线的变量，通常不需要配置   | Required |
-| sha       | sha，会侦测流水线的变量，通常不需要配置    | Required |
-| instrumentCwd     | babel插桩路径，通常不需要配置        | Required               |
-| reportID    | reportID，会侦测流水线的变量，通常不需要配置 | Optional          |
-| branch    | branch，会侦测流水线的变量，通常不需要配置 | Optional          |
-| compareTarget    | branch，会侦测流水线的变量，通常不需要配置 | Optional          |
+| Prop      | Description                                                                                                             | Usage                                     |
+|-----------|-------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| dsn       | Service address for reporting coverage, recommended to be configured via pipeline variables.                            | Required               |
+| reporter  | Reporter for reporting coverage, recommended to be configured via pipeline variables.                                   | Required               |
+| projectID | Git repository ID, the plugin will detect the variables of the pipeline, which usually don't need to be configured.     | Required |
+| sha       | Git repository SHA, which usually don't need to be configured.                                                          | Required |
+| instrumentCwd     | Instrument Cwd, which usually don't need to be configured.                                                              | Required               |
+| reportID    | Report ID, Used to distinguish between different test cases.                                                            | Optional          |
+| branch    | Git repository branch, the plugin will detect the variables of the pipeline, which usually don't need to be configured. | Optional          |
+| compareTarget    | Compare target, used as a baseline against current sha to calculate change line coverage.                               | Optional          |
 
