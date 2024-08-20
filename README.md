@@ -1,14 +1,22 @@
 # babel-plugin-canyon
 
-配合babel-plugin-istanbul使用，
-进行上传代码覆盖率必要参数配置，
-构建后会在window上添加__canyon__对象
+A Babel plugin that instruments your code with Istanbul coverage. It can instantly be used with karma-coverage and mocha on Node.js (through nyc).
+
+__Note:__ To use this plugin, it is recommended to use a branch to determine whether it is in effect or not, as he is not available for production environments.
+
+## Usage
+
+Install it:
+
+```sh
+npm install --save-dev babel-plugin-istanbul
+```
+
+Add it to `babel.config.js` in test mode:
 
 ```js
-let babelConfig = {
-  plugins: [
-    "istanbul",
-    ["canyon",{"projectID":"999","commitSha":"xxxxxx"}
-  ]
+module.exports = {
+  plugins:
+    process.env.BRANCHNAME === 'test-coverage'? ['istanbul', 'canyon']:[]
 }
 ```
