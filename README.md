@@ -50,7 +50,7 @@ module.exports = {
 | dsn       | Service address for reporting coverage, recommended to be configured via pipeline variables.                            | Required               |
 | reporter  | Reporter for reporting coverage, recommended to be configured via pipeline variables.                                   | Required               |
 | projectID | Git repository ID, the plugin will detect the variables of the pipeline, which usually don't need to be configured.     | Required |
-| sha       | Git repository SHA, which usually don't need to be configured.                                                          | Required |
+| sha       | Git repository SHA, the plugin will detect the variables of the pipeline, which usually don't need to be configured.    | Required |
 | instrumentCwd     | Instrument Cwd, which usually don't need to be configured.                                                              | Required               |
 | reportID    | Report ID, Used to distinguish between different test cases.                                                            | Optional          |
 | branch    | Git repository branch, the plugin will detect the variables of the pipeline, which usually don't need to be configured. | Optional          |
