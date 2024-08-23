@@ -33,6 +33,9 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
+      istanbul-lib-coverage:
+        specifier: ^3.2.2
+        version: 3.2.2
       mocha:
         specifier: ^6.2.2
         version: 6.2.3

@@ -19,7 +19,21 @@ describe('babel-plugin-istanbul', function () {
           }]
         ]
       })
-      console.log(result.code)
+      // console.log(result.code)
+    })
+
+    it('should instrument file if shouldSkip returns false11223', function () {
+      var result = babel.transformFileSync('./fixtures/should-cover.js', {
+        babelrc: false,
+        configFile: false,
+        plugins: [
+          'istanbul',
+          [makeVisitor, {
+            include: ['fixtures/should-cover.js']
+          }]
+        ]
+      })
+      // console.log(result.code)
     })
   })
 })

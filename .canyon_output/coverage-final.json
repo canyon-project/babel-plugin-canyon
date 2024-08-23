@@ -1,0 +1,148 @@
+{
+  "/Users/zhangtao/Desktop/babel-plugin-canyon3/fixtures/plugin-should-cover.js": {
+    "path": "/Users/zhangtao/Desktop/babel-plugin-canyon3/fixtures/plugin-should-cover.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 1,
+          "column": 12
+        },
+        "end": {
+          "line": 3,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 2,
+          "column": 2
+        },
+        "end": {
+          "line": 2,
+          "column": 20
+        }
+      },
+      "2": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 5
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 1,
+            "column": 12
+          },
+          "end": {
+            "line": 1,
+            "column": 13
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 24
+          },
+          "end": {
+            "line": 3,
+            "column": 1
+          }
+        },
+        "line": 1
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "f": {
+      "0": 0
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "3a4edc5462ad0da4cbb27c0271f56a95536846bf"
+  },
+  "/Users/zhangtao/Desktop/babel-plugin-canyon3/fixtures/should-cover.js": {
+    "path": "/Users/zhangtao/Desktop/babel-plugin-canyon3/fixtures/should-cover.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 1,
+          "column": 12
+        },
+        "end": {
+          "line": 3,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 2,
+          "column": 2
+        },
+        "end": {
+          "line": 2,
+          "column": 20
+        }
+      },
+      "2": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 5
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 1,
+            "column": 12
+          },
+          "end": {
+            "line": 1,
+            "column": 13
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 24
+          },
+          "end": {
+            "line": 3,
+            "column": 1
+          }
+        },
+        "line": 1
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "f": {
+      "0": 0
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "64c2d6b65919ad615e1ac62039f0bc60c5694465"
+  }
+}
