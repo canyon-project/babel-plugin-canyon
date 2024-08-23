@@ -7,7 +7,7 @@
     "lib"
   ],
   "scripts": {
-    "release": "node gen-template.js && babel src --out-dir lib",
+    "release": "node scripts/gen-template.js && babel src --out-dir lib",
     "pretest": "npm run release",
     "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --timeout 5000 test/*.js"
   },

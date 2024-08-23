@@ -15,7 +15,7 @@ function walkSync(currentDirPath, callback) {
 let tmp = {}
 walkSync('templates', function (filePath, stat) {
   const rs = fs.readFileSync(filePath, "utf8");
-  const gl = fs.readFileSync('./window.js', "utf8");
+  const gl = fs.readFileSync('./scripts/window.js', "utf8");
   tmp[filePath] = rs.replaceAll('window', gl)
 });
 
