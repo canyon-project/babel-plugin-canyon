@@ -43,3 +43,5 @@ jspm_packages
 src/template.js
 
 pnpm-lock.yaml
+
+.canyon_output

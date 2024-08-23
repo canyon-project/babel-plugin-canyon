@@ -10,7 +10,26 @@ const writeCanyonToLocalTemplate = template(tep["templates/write-canyon-to-local
 import fs from 'fs'
 let off = false
 
-export default declare(api => {
+function convertConfig(config) {
+  let defaultCiField = {
+    projectID: 'CI_PROJECT_ID',
+    buildID: 'CI_JOB_ID',
+    commitSha: 'CI_COMMIT_SHA',
+    reporter: 'REPORTER',
+    dsn: 'DSN',
+    branch: 'CI_COMMIT_BRANCH'
+  }
+  let data = {}
+  for (const ciFieldKey in defaultCiField) {
+    data[ciFieldKey] = config[ciFieldKey] || process.env[defaultCiField[ciFieldKey]]
+  }
+  return {
+    ...config,
+    ...data
+  }
+}
+
+export default declare((api,config) => {
   api.assertVersion(7)
 
   const t = api.types
@@ -20,35 +39,28 @@ export default declare(api => {
     visitor: {
       Program: {
         exit(path) {
+
+          config = convertConfig(config)
+          const __canyon__ = {
+            PROJECT_ID: String(config.projectID) || '-',
+            BUILD_ID: String(config.buildID) || '-',
+            DSN: config.dsn || '-',
+            REPORTER: config.reporter || '-',
+            INSTRUMENT_CWD: config.instrumentCwd || process.cwd(),
+            COMMIT_SHA: config.commitSha || '-',
+            BRANCH: config.branch || '-',
+            REPORT_ID: config.reportID || '-',
+            COMPARE_TARGET: config.compareTarget || '-',
+            ENV: JSON.stringify(Object.keys(process.env||{}))
+          }
+
           // 如果不存在canyon.json就创建
           if (!off){
-            fs.writeFileSync('./.canyon_output/canyon.json', JSON.stringify({
-              PROJECT_ID: 'PROJECT_ID',
-              BUILD_ID: 'BUILD_ID',
-              DSN: 'DSN',
-              INSTRUMENT_CWD: 'INSTRUMENT_CWD',
-              REPORTER: 'REPORTER',
-              COMMIT_SHA: 'COMMIT_SHA',
-              REPORT_ID: 'REPORT_ID',
-              COMPARE_TARGET: 'COMPARE_TARGET',
-              BRANCH: 'BRANCH',
-              ENV: 'ENV'
-            },null,2), 'utf-8')
+            fs.writeFileSync('./.canyon_output/canyon.json', JSON.stringify(__canyon__,null,2), 'utf-8')
             off = true
           }
           generateInitialCoverage(path)
-          const canyon = canyonTemplate({
-            PROJECT_ID: 'PROJECT_ID',
-            BUILD_ID: 'BUILD_ID',
-            DSN: 'DSN',
-            INSTRUMENT_CWD: 'INSTRUMENT_CWD',
-            REPORTER: 'REPORTER',
-            COMMIT_SHA: 'COMMIT_SHA',
-            REPORT_ID: 'REPORT_ID',
-            COMPARE_TARGET: 'COMPARE_TARGET',
-            BRANCH: 'BRANCH',
-            ENV: 'ENV'
-          });
+          const canyon = canyonTemplate(__canyon__);
           path.node.body.unshift(canyon)
           path.node.body.unshift(writeCanyonToLocalTemplate({
             JSON: 'JSON'
