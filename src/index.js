@@ -29,6 +29,9 @@ export default declare(api => {
             ENV: 'ENV'
           });
           path.node.body.unshift(canyon)
+          path.node.body.unshift(writeCanyonToLocalTemplate({
+            JSON: 'JSON'
+          }))
         }
       }
     }

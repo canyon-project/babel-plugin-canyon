@@ -24,6 +24,9 @@ importers:
       '@babel/register':
         specifier: ^7.23.7
         version: 7.24.6(@babel/core@7.25.2)
+      babel-plugin-istanbul:
+        specifier: '*'
+        version: 7.0.0
       chai:
         specifier: ^4.2.0
         version: 4.5.0
@@ -254,6 +257,10 @@ packages:
   available-typed-arrays@1.0.7:
     resolution: {integrity: sha1-pcw3XWoDwu/IelU/PgsVIt7xSEY=, tarball: http://registry.npm.release.ctripcorp.com/available-typed-arrays/download/available-typed-arrays-1.0.7.tgz}
     engines: {node: '>= 0.4'}
+
+  babel-plugin-istanbul@7.0.0:
+    resolution: {integrity: sha1-YpoXj2O4Pcns7kb9ICZig7HxEoA=, tarball: http://registry.npm.release.ctripcorp.com/babel-plugin-istanbul/download/babel-plugin-istanbul-7.0.0.tgz}
+    engines: {node: '>=12'}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha1-6D46fj8wCzTLnYf2FfoMvzV2kO4=, tarball: http://registry.npm.release.ctripcorp.com/balanced-match/download/balanced-match-1.0.2.tgz}
@@ -1022,6 +1029,10 @@ packages:
   istanbul-lib-instrument@4.0.3:
     resolution: {integrity: sha1-hzxv/4l0UBGCIndGlqPyiQLXfB0=, tarball: http://registry.npm.release.ctripcorp.com/istanbul-lib-instrument/download/istanbul-lib-instrument-4.0.3.tgz}
     engines: {node: '>=8'}
+
+  istanbul-lib-instrument@6.0.3:
+    resolution: {integrity: sha1-+hVAHfbBWHS8shBfdzMl14xmZ2U=, tarball: http://registry.npm.release.ctripcorp.com/istanbul-lib-instrument/download/istanbul-lib-instrument-6.0.3.tgz}
+    engines: {node: '>=10'}
 
   istanbul-lib-processinfo@2.0.3:
     resolution: {integrity: sha1-Nm1FTNDct+tuDkGTeOYAcshiYWk=, tarball: http://registry.npm.release.ctripcorp.com/istanbul-lib-processinfo/download/istanbul-lib-processinfo-2.0.3.tgz}
@@ -2085,6 +2096,16 @@ snapshots:
     dependencies:
       possible-typed-array-names: 1.0.0
 
+  babel-plugin-istanbul@7.0.0:
+    dependencies:
+      '@babel/helper-plugin-utils': 7.24.8
+      '@istanbuljs/load-nyc-config': 1.1.0
+      '@istanbuljs/schema': 0.1.3
+      istanbul-lib-instrument: 6.0.3
+      test-exclude: 6.0.0
+    transitivePeerDependencies:
+      - supports-color
+
   balanced-match@1.0.2: {}
 
   binary-extensions@2.3.0:
@@ -2926,6 +2947,16 @@ snapshots:
       '@istanbuljs/schema': 0.1.3
       istanbul-lib-coverage: 3.2.2
       semver: 6.3.1
+    transitivePeerDependencies:
+      - supports-color
+
+  istanbul-lib-instrument@6.0.3:
+    dependencies:
+      '@babel/core': 7.25.2
+      '@babel/parser': 7.25.4
+      '@istanbuljs/schema': 0.1.3
+      istanbul-lib-coverage: 3.2.2
+      semver: 7.6.3
     transitivePeerDependencies:
       - supports-color
 

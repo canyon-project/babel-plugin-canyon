@@ -13,6 +13,7 @@ describe('babel-plugin-istanbul', function () {
         babelrc: false,
         configFile: false,
         plugins: [
+            'istanbul',
           [makeVisitor, {
             include: ['fixtures/plugin-should-cover.js']
           }]
