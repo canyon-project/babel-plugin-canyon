@@ -3,9 +3,10 @@
 // import { execFileSync } from 'child_process'
 import { declare } from '@babel/helper-plugin-utils'
 import {template} from "@babel/core";
-const canyonTemplate = template(`
-const a=1;
-`);
+import tep from './template'
+const canyonTemplate = template(tep["templates/canyon.template.js"]);
+const writeCanyonToLocalTemplate = template(tep["templates/write-canyon-to-local-template.js"])
+
 export default declare(api => {
   api.assertVersion(7)
 
@@ -15,7 +16,18 @@ export default declare(api => {
     visitor: {
       Program: {
         exit(path) {
-          const canyon = canyonTemplate();
+          const canyon = canyonTemplate({
+            PROJECT_ID: 'PROJECT_ID',
+            BUILD_ID: 'BUILD_ID',
+            DSN: 'DSN',
+            INSTRUMENT_CWD: 'INSTRUMENT_CWD',
+            REPORTER: 'REPORTER',
+            COMMIT_SHA: 'COMMIT_SHA',
+            REPORT_ID: 'REPORT_ID',
+            COMPARE_TARGET: 'COMPARE_TARGET',
+            BRANCH: 'BRANCH',
+            ENV: 'ENV'
+          });
           path.node.body.unshift(canyon)
         }
       }
