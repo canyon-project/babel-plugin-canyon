@@ -1,0 +1,47 @@
+{
+  "name": "babel-plugin-canyon3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "release": "babel src --out-dir lib",
+    "pretest": "npm run release",
+    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --timeout 5000 test/*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/helper-plugin-utils": "^7.0.0"
+  },
+  "standard": {
+    "ignore": [
+      "fixtures/*.js"
+    ]
+  },
+  "nyc": {
+    "include": [
+      "src/*.js",
+      "fixtures/should-cover.js"
+    ],
+    "require": [
+      "@babel/register"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.1",
+    "@babel/plugin-transform-modules-commonjs": "^7.24.1",
+    "@babel/register": "^7.23.7",
+    "chai": "^4.2.0",
+    "cross-env": "^7.0.3",
+    "mocha": "^6.2.2",
+    "nyc": "^15.0.0",
+    "standard": "^14.3.1"
+  }
+}
