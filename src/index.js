@@ -56,6 +56,11 @@ export default declare((api,config) => {
 
           // 如果不存在canyon.json就创建
           if (!off){
+            // 如果.canyon_output不存在就创建
+            const dir = './.canyon_output'
+            if (!fs.existsSync(dir)) {
+              fs.mkdirSync(dir, {recursive: true});
+            }
             fs.writeFileSync('./.canyon_output/canyon.json', JSON.stringify(__canyon__,null,2), 'utf-8')
             off = true
           }
