@@ -1,6 +1,3 @@
-// import path from 'path'
-// import { realpathSync } from 'fs'
-// import { execFileSync } from 'child_process'
 import { declare } from '@babel/helper-plugin-utils'
 import {template} from "@babel/core";
 import tep from './template'
@@ -50,11 +47,9 @@ export default declare((api,config) => {
             COMMIT_SHA: config.commitSha || '-',
             BRANCH: config.branch || '-',
             REPORT_ID: config.reportID || '-',
-            COMPARE_TARGET: config.compareTarget || '-',
-            ENV: JSON.stringify(Object.keys(process.env||{}))
+            COMPARE_TARGET: config.compareTarget || '-'
           }
 
-          // 如果不存在canyon.json就创建
           if (!off){
             // 如果.canyon_output不存在就创建
             const dir = './.canyon_output'
@@ -64,6 +59,7 @@ export default declare((api,config) => {
             fs.writeFileSync('./.canyon_output/canyon.json', JSON.stringify(__canyon__,null,2), 'utf-8')
             off = true
           }
+          // 关键，会执行多次
           generateInitialCoverage(path)
           const canyon = canyonTemplate(__canyon__);
           path.node.body.unshift(canyon)
