@@ -63,8 +63,8 @@ export default declare((api,config) => {
                   "reporter": __canyon__.REPORTER,
                   "sha": __canyon__.COMMIT_SHA,
                   "branch": __canyon__.BRANCH,
-                  "reportID": __canyon__.REPORT_ID,
-                  "compareTarget": __canyon__.COMPARE_TARGET
+                  "compareTarget": __canyon__.COMPARE_TARGET,
+                  "instrumentCwd": __canyon__.INSTRUMENT_CWD
                 }
                 ,null,2), 'utf-8')
             off = true
