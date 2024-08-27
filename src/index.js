@@ -56,7 +56,17 @@ export default declare((api,config) => {
             if (!fs.existsSync(dir)) {
               fs.mkdirSync(dir, {recursive: true});
             }
-            fs.writeFileSync('./.canyon_output/canyon.json', JSON.stringify(__canyon__,null,2), 'utf-8')
+            fs.writeFileSync('./.canyon_output/canyon.json', JSON.stringify({
+                  "projectID": __canyon__.PROJECT_ID,
+                  "buildID": __canyon__.BUILD_ID,
+                  "dsn": __canyon__.DSN,
+                  "reporter": __canyon__.REPORTER,
+                  "sha": __canyon__.COMMIT_SHA,
+                  "branch": __canyon__.BRANCH,
+                  "reportID": __canyon__.REPORT_ID,
+                  "compareTarget": __canyon__.COMPARE_TARGET
+                }
+                ,null,2), 'utf-8')
             off = true
           }
           // 关键，会执行多次
