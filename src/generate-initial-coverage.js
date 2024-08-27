@@ -12,6 +12,8 @@ export const generateInitialCoverage = (paramsPath) => {
         fs.mkdirSync(dir, {recursive: true});
     }
     if (initialCoverageDataForTheCurrentFile) {
-        fs.writeFileSync(`./.canyon_output/coverage-${Math.random()}.json`, JSON.stringify(initialCoverageDataForTheCurrentFile, null, 2), 'utf-8');
+        fs.writeFileSync(`./.canyon_output/coverage-${Math.random()}.json`, JSON.stringify({
+            [initialCoverageDataForTheCurrentFile.path]: initialCoverageDataForTheCurrentFile
+        }, null, 2), 'utf-8');
     }
 }
