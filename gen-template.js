@@ -15,9 +15,7 @@ function walkSync(currentDirPath, callback) {
 let tmp = {}
 walkSync('templates', function (filePath, stat) {
   const rs = fs.readFileSync(filePath, "utf8");
-  const gl = fs.readFileSync('./window.js', "utf8");
-  // tmp = Object.assign(tmp,rs)
-  tmp[filePath] = rs.replaceAll('window', gl)
+  tmp[filePath] = rs
 });
 
 fs.writeFileSync('lib/template.js', `module.exports = ${JSON.stringify(tmp, null, 2)}`, "utf8")
