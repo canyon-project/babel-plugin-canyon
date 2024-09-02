@@ -45,7 +45,7 @@ export default declare((api,config) => {
             DSN: config.dsn || '-',
             REPORTER: config.reporter || '-',
             INSTRUMENT_CWD: config.instrumentCwd || process.cwd(),
-            COMMIT_SHA: config.commitSha || '-',
+            COMMIT_SHA: config.commitSha ||config.sha || '-',
             BRANCH: config.branch || '-',
             REPORT_ID: config.reportID || '-',
             COMPARE_TARGET: config.compareTarget || '-',

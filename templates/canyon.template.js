@@ -22,6 +22,7 @@
             instrumentCwd: 'INSTRUMENT_CWD',
             reporter: 'REPORTER',
             commitSha: 'COMMIT_SHA',
+            sha: 'COMMIT_SHA',
             reportID: 'REPORT_ID',
             compareTarget: 'COMPARE_TARGET',
             branch: 'BRANCH',
