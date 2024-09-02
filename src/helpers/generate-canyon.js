@@ -14,7 +14,7 @@ function convertKeysToCamelCase(obj) {
         reportID: obj.REPORT_ID,
         compareTarget: obj.COMPARE_TARGET,
         branch: obj.BRANCH,
-        env: obj.ENV
+        version: obj.VERSION
     }
 }
 

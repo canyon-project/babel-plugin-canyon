@@ -6,7 +6,7 @@ import {generateInitialCoverage} from "./helpers/generate-initial-coverage";
 import {generateCanyon} from "./helpers/generate-canyon";
 const canyonTemplate = template(tep["templates/canyon.template.js"]);
 const writeCanyonToLocalTemplate = template(tep["templates/write-canyon-to-local-template.js"])
-
+import packageJson from '../package.json'
 
 // 转换配置，优先级：babel配置 > 环境变量
 function convertConfig(config) {
@@ -47,7 +47,8 @@ export default declare((api,config) => {
             COMMIT_SHA: config.commitSha ||config.sha || '-',
             BRANCH: config.branch || '-',
             REPORT_ID: config.reportID || '-',
-            COMPARE_TARGET: config.compareTarget || '-'
+            COMPARE_TARGET: config.compareTarget || '-',
+            VERSION: packageJson.version || '-'
           }
 
 
