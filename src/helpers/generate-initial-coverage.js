@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path'
-import {extractCoverageData} from "./extractCoverageData";
+import {extractCoverageData} from "./extract-coverage-data";
 
 
 export const generateInitialCoverage = (paramsPath) => {
