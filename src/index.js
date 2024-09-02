@@ -3,6 +3,7 @@ import {template} from "@babel/core";
 import tep from './template'
 import generate from '@babel/generator';
 import {generateInitialCoverage} from "./helpers/generate-initial-coverage";
+import {generateCanyon} from "./helpers/generate-canyon";
 const canyonTemplate = template(tep["templates/canyon.template.js"]);
 const writeCanyonToLocalTemplate = template(tep["templates/write-canyon-to-local-template.js"])
 
@@ -33,8 +34,6 @@ export default declare((api,config) => {
     visitor: {
       Program: {
         exit(path) {
-          // 生成初始覆盖率数据
-          generateInitialCoverage(generate(path.node).code)
 
           // 转换配置
           config = convertConfig(config)
@@ -54,6 +53,9 @@ export default declare((api,config) => {
           }
 
 
+          // 生成初始覆盖率数据
+          generateInitialCoverage(generate(path.node).code)
+          generateCanyon(__canyon__)
 
           // 生成canyon代码
           const canyon = canyonTemplate(__canyon__);
