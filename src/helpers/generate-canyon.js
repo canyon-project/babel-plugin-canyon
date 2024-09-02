@@ -26,7 +26,6 @@ export const generateCanyon = (canyon) => {
     }
     // 如果不存在则创建
     if (!fs.existsSync(filePath)) {
-        console.log('应该只执行一次')
         fs.writeFileSync(filePath, JSON.stringify(convertKeysToCamelCase(canyon), null, 2), 'utf-8');
     }
 }
