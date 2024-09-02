@@ -47,8 +47,7 @@ export default declare((api,config) => {
             COMMIT_SHA: config.commitSha ||config.sha || '-',
             BRANCH: config.branch || '-',
             REPORT_ID: config.reportID || '-',
-            COMPARE_TARGET: config.compareTarget || '-',
-            ENV: JSON.stringify(Object.keys(process.env||{}))
+            COMPARE_TARGET: config.compareTarget || '-'
           }
 
 

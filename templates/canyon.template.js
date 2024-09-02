@@ -26,7 +26,6 @@
             reportID: 'REPORT_ID',
             compareTarget: 'COMPARE_TARGET',
             branch: 'BRANCH',
-            env:'ENV'
         }
 
 
