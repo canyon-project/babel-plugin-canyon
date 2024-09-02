@@ -1,7 +1,7 @@
 on:
    push:
      branches:
-       - main
+       - v3
 name: release-please
 jobs:
   build:
