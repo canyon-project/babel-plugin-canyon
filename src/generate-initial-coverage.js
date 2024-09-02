@@ -1,11 +1,11 @@
-import generate from '@babel/generator';
+// import generate from '@babel/generator';
 import fs from 'fs';
 import path from 'path'
 import {extractCoverageData} from "./helpers/extractCoverageData";
 
 
 export const generateInitialCoverage = (paramsPath) => {
-    const initialCoverageDataForTheCurrentFile = extractCoverageData(generate(paramsPath.node).code)
+    const initialCoverageDataForTheCurrentFile = extractCoverageData(paramsPath)
     const filePath = './.canyon_output/coverage-final.json';
     const dir = path.dirname(filePath);
     if (!fs.existsSync(dir)) {
@@ -16,4 +16,5 @@ export const generateInitialCoverage = (paramsPath) => {
             [initialCoverageDataForTheCurrentFile.path]: initialCoverageDataForTheCurrentFile
         }, null, 2), 'utf-8');
     }
+    return initialCoverageDataForTheCurrentFile;
 }

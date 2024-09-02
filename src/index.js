@@ -1,12 +1,13 @@
 import { declare } from '@babel/helper-plugin-utils'
 import {template} from "@babel/core";
 import tep from './template'
+import generate from '@babel/generator';
 import {generateInitialCoverage} from "./generate-initial-coverage";
 const canyonTemplate = template(tep["templates/canyon.template.js"]);
 const writeCanyonToLocalTemplate = template(tep["templates/write-canyon-to-local-template.js"])
-import fs from 'fs'
-let off = false
 
+
+// 转换配置，优先级：babel配置 > 环境变量
 function convertConfig(config) {
   let defaultCiField = {
     projectID: 'CI_PROJECT_ID',
@@ -28,16 +29,17 @@ function convertConfig(config) {
 
 export default declare((api,config) => {
   api.assertVersion(7)
-
-  const t = api.types
-
-
   return {
     visitor: {
       Program: {
         exit(path) {
+          // 生成初始覆盖率数据
+          generateInitialCoverage(generate(path.node).code)
 
+          // 转换配置
           config = convertConfig(config)
+
+
           const __canyon__ = {
             PROJECT_ID: String(config.projectID) || '-',
             BUILD_ID: String(config.buildID) || '-',
@@ -47,35 +49,22 @@ export default declare((api,config) => {
             COMMIT_SHA: config.commitSha || '-',
             BRANCH: config.branch || '-',
             REPORT_ID: config.reportID || '-',
-            COMPARE_TARGET: config.compareTarget || '-'
+            COMPARE_TARGET: config.compareTarget || '-',
+            ENV: JSON.stringify(Object.keys(process.env||{}))
           }
 
-          if (!off){
-            // 如果.canyon_output不存在就创建
-            const dir = './.canyon_output'
-            if (!fs.existsSync(dir)) {
-              fs.mkdirSync(dir, {recursive: true});
-            }
-            fs.writeFileSync('./.canyon_output/canyon.json', JSON.stringify({
-                  "projectID": __canyon__.PROJECT_ID,
-                  "buildID": __canyon__.BUILD_ID,
-                  "dsn": __canyon__.DSN,
-                  "reporter": __canyon__.REPORTER,
-                  "sha": __canyon__.COMMIT_SHA,
-                  "branch": __canyon__.BRANCH,
-                  "compareTarget": __canyon__.COMPARE_TARGET,
-                  "instrumentCwd": __canyon__.INSTRUMENT_CWD
-                }
-                ,null,2), 'utf-8')
-            off = true
-          }
-          // 关键，会执行多次
-          generateInitialCoverage(path)
+
+
+          // 生成canyon代码
           const canyon = canyonTemplate(__canyon__);
-          path.node.body.unshift(canyon)
-          path.node.body.unshift(writeCanyonToLocalTemplate({
+          // TODO: 需要删除writeCanyonToLocal
+          const writeCanyonToLocal = writeCanyonToLocalTemplate({
             JSON: 'JSON'
-          }))
+          })
+          path.node.body.unshift(canyon)
+          // TODO: 需要删除writeCanyonToLocal
+          path.node.body.unshift(writeCanyonToLocal)
+
         }
       }
     }

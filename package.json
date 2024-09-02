@@ -36,6 +36,7 @@
   "devDependencies": {
     "@babel/cli": "^7.24.1",
     "@babel/core": "^7.24.1",
+    "@babel/generator": "^7.25.6",
     "@babel/plugin-transform-modules-commonjs": "^7.24.1",
     "@babel/register": "^7.23.7",
     "babel-plugin-istanbul": "6.1.1",
