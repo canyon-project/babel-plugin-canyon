@@ -1,7 +1,6 @@
-// import generate from '@babel/generator';
 import fs from 'fs';
 import path from 'path'
-import {extractCoverageData} from "./helpers/extractCoverageData";
+import {extractCoverageData} from "./extractCoverageData";
 
 
 export const generateInitialCoverage = (paramsPath) => {

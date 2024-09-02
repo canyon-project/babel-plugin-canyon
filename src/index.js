@@ -2,7 +2,7 @@ import { declare } from '@babel/helper-plugin-utils'
 import {template} from "@babel/core";
 import tep from './template'
 import generate from '@babel/generator';
-import {generateInitialCoverage} from "./generate-initial-coverage";
+import {generateInitialCoverage} from "./helpers/generate-initial-coverage";
 const canyonTemplate = template(tep["templates/canyon.template.js"]);
 const writeCanyonToLocalTemplate = template(tep["templates/write-canyon-to-local-template.js"])
 
