@@ -10,7 +10,8 @@ export const generateInitialCoverage = (paramsPath) => {
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, {recursive: true});
     }
-    if (initialCoverageDataForTheCurrentFile) {
+    // 防止返回的数据为空
+    if (initialCoverageDataForTheCurrentFile && initialCoverageDataForTheCurrentFile.path) {
         fs.writeFileSync(`./.canyon_output/coverage-${Math.random()}.json`, JSON.stringify({
             [initialCoverageDataForTheCurrentFile.path]: initialCoverageDataForTheCurrentFile
         }, null, 2), 'utf-8');
