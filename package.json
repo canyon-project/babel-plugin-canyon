@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-canyon",
-  "version": "1.8.73",
+  "version": "1.8.74",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -14,9 +14,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@babel/helper-plugin-utils": "^7.0.0"
-  },
   "standard": {
     "ignore": [
       "fixtures/*.js"
@@ -33,10 +30,13 @@
     "sourceMap": false,
     "instrument": false
   },
+  "dependencies": {
+    "@babel/helper-plugin-utils": "^7.0.0",
+    "@babel/generator": "^7.25.6"
+  },
   "devDependencies": {
     "@babel/cli": "^7.24.1",
     "@babel/core": "^7.24.1",
-    "@babel/generator": "^7.25.6",
     "@babel/plugin-transform-modules-commonjs": "^7.24.1",
     "@babel/register": "^7.23.7",
     "babel-plugin-istanbul": "6.1.1",
