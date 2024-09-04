@@ -47,6 +47,10 @@ export default declare((api,config) => {
           // 转换配置
           config = convertConfig(config)
 
+          if (config.debug){
+            console.log(process.env)
+          }
+
           const __canyon__ = {
             PROJECT_ID: String(config.projectID) || '-',
             BUILD_ID: String(config.buildID) || '-',
