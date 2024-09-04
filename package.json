@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-canyon",
-  "version": "1.8.71",
+  "version": "1.8.72",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -45,5 +45,8 @@
     "mocha": "^6.2.2",
     "nyc": "^15.0.0",
     "standard": "^14.3.1"
+  },
+  "peerDependencies": {
+    "axios": "*"
   }
 }

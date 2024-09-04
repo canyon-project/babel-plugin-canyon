@@ -19,7 +19,7 @@ describe('babel-plugin-istanbul', function () {
           }]
         ]
       })
-      console.log(result.code)
+      // console.log(result.code)
     })
 
     it('should instrument file if shouldSkip returns false11223', function () {
@@ -33,7 +33,7 @@ describe('babel-plugin-istanbul', function () {
           }]
         ]
       })
-      console.log(result.code)
+      // console.log(result.code)
     })
   })
 })

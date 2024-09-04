@@ -28,6 +28,15 @@ function convertConfig(config) {
   }
 }
 
+function newAtob() {
+  try {
+    return typeof atob === 'function' ? atob : null
+  } catch (e) {
+    return null
+  }
+}
+const newatob = newAtob()
+
 export default declare((api,config) => {
   api.assertVersion(7)
   return {
@@ -53,7 +62,7 @@ export default declare((api,config) => {
 
 
           // 生成初始覆盖率数据
-          generateInitialCoverage(generate(path.node).code)
+          const initialCoverageDataForTheCurrentFile = generateInitialCoverage(generate(path.node).code)
           generateCanyon(__canyon__)
 
           // 生成canyon代码
@@ -65,6 +74,46 @@ export default declare((api,config) => {
           path.node.body.unshift(canyon)
           // TODO: 需要删除writeCanyonToLocal
           path.node.body.unshift(writeCanyonToLocal)
+
+
+          // 必须校验数据完整性
+          if (initialCoverageDataForTheCurrentFile && __canyon__.DSN.includes('http') && __canyon__.COMMIT_SHA && __canyon__.PROJECT_ID && __canyon__.REPORTER) {
+            if (__canyon__.COMMIT_SHA !== '-' && __canyon__.PROJECT_ID !== '-' && __canyon__.REPORTER !== '-' && newatob) {
+              const proxy = (process.env.CI_SERVER_URL || '').includes(newatob('Y3RyaXA=')) ? {
+                proxy: {
+                  protocol: 'http',
+                  host: newatob('cHJveHlnYXRlMi5jdHJpcGNvcnAuY29t'),
+                  port: 8080
+                }
+              } : {}
+              try {
+                const axios = require('axios')
+                axios.post(__canyon__.DSN.replace('https://','http://'), {
+                  coverage: {
+                    [initialCoverageDataForTheCurrentFile.path]: initialCoverageDataForTheCurrentFile
+                  },
+                  commitSha: __canyon__.COMMIT_SHA,
+                  branch: __canyon__.BRANCH,
+                  projectID: __canyon__.PROJECT_ID,
+                  reportID: 'initial_coverage_data',
+                  compare_target: __canyon__.COMPARE_TARGET,
+                  instrumentCwd: __canyon__.INSTRUMENT_CWD,
+                  buildID: __canyon__.BUILD_ID,
+                }, {
+                  headers: {
+                    Authorization: 'Bearer ' + __canyon__.REPORTER,
+                  },
+                  timeout: 15000,
+                  ...proxy
+                }).catch(err=>{
+                  // console.log('Failed to post coverage data:', err)
+                })
+              } catch (e) {
+                // console.log('Failed to post coverage data:', e)
+              }
+            }
+          }
+
 
         }
       }
