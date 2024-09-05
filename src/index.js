@@ -67,7 +67,7 @@ export default declare((api,config) => {
 
           // 生成初始覆盖率数据
           const initialCoverageDataForTheCurrentFile = generateInitialCoverage(generate(path.node).code)
-          generateCanyon(__canyon__)
+          // generateCanyon(__canyon__)
 
           // 生成canyon代码
           const canyon = canyonTemplate(__canyon__);
