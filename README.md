@@ -1,4 +1,4 @@
-# Canyon Uploader
+# babel-plugin-canyon
 
 ## Usage
 
