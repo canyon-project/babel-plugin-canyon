@@ -116,9 +116,11 @@ export default declare((api,config) => {
                 }
               }
             }
+          } else {
+            if (config.debug){
+              console.log(JSON.stringify(initialCoverageDataForTheCurrentFile))
+            }
           }
-
-
         }
       }
     }
