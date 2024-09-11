@@ -47,10 +47,6 @@ export default declare((api,config) => {
           // 转换配置
           config = convertConfig(config)
 
-          if (config.debug){
-            console.log(process.env)
-          }
-
           const __canyon__ = {
             PROJECT_ID: String(config.projectID) || '-',
             BUILD_ID: String(config.buildID) || '-',
@@ -110,10 +106,14 @@ export default declare((api,config) => {
                   timeout: 15000,
                   ...proxy
                 }).catch(err=>{
-                  // console.log('Failed to post coverage data:', err)
+                  if (config.debug){
+                    console.log('Failed to post coverage data:', err)
+                  }
                 })
               } catch (e) {
-                // console.log('Failed to post coverage data:', e)
+                if (config.debug){
+                  console.log('Failed to post coverage data:', e)
+                }
               }
             }
           }
